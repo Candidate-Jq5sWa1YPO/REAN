@@ -1,0 +1,1 @@
+aws cloudformation create-stack --template-body file://$2 --stack-name $1 --region $3 --parameters ParameterKey=jenkinsPWParam,ParameterValue="Jq5sWa1YPO" ParameterKey=sshKeyParam,ParameterValue="Candidate-Jq5sWa1YPO" ParameterKey=jenkinsServerParam,ParameterValue="t2.medium" --capabilities CAPABILITY_IAM

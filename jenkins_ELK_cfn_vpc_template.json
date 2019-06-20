@@ -409,9 +409,9 @@
                 "apt-get update\n",
                 "apt-get install python-pip -y\n",
                 "pip install awscli\n",
-                "wget -O ~/bitnami-jenkins-1.639-0-linux-x64-installer.run https://bitnami.com/redirect/to/83504/bitnami-jenkins-1.639-0-linux-x64-installer.run?bypassauth=false\n",
-                "chmod 754 ~/bitnami-jenkins-1.639-0-linux-x64-installer.run\n",
-                "~/bitnami-jenkins-1.639-0-linux-x64-installer.run --prefix /opt/jenkins --mode unattended --base_password ",
+                "wget -O ~/bitnami-jenkins-2.176.1-0-linux-x64-installer.run https://bitnami.com/redirect/to/575932/bitnami-jenkins-2.176.1-0-linux-x64-installer.run?bypassauth=false\n",
+                "chmod 754 ~/bitnami-jenkins-2.176.1-0-linux-x64-installer.run",
+                "~/bitnami-jenkins-2.176.1-0-linux-x64-installer.run --prefix /opt/jenkins --mode unattended --base_password ",
                 {
                   "Ref": "jenkinsPWParam"
                 },

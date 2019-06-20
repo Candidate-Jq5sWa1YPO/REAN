@@ -1,5 +1,5 @@
 {
-  "Description": "Cloud Formation Template.  Template Created: 2019-06-19 15:54:48",
+  "Description": "Cloud Formation Template.  Template Created: 2019-06-20 16:39:08",
   "Mappings": {
     "AWSInstanceType2Arch": {
       "c1.medium": {
@@ -408,9 +408,10 @@
                 "service ufw stop\n",
                 "apt-get update\n",
                 "apt-get install python-pip -y\n",
+		"apt-get install fontconfig -y\n",
                 "pip install awscli\n",
                 "wget -O ~/bitnami-jenkins-2.176.1-0-linux-x64-installer.run https://bitnami.com/redirect/to/575932/bitnami-jenkins-2.176.1-0-linux-x64-installer.run?bypassauth=false\n",
-                "chmod 754 ~/bitnami-jenkins-2.176.1-0-linux-x64-installer.run",
+                "chmod 754 ~/bitnami-jenkins-2.176.1-0-linux-x64-installer.run\n",
                 "~/bitnami-jenkins-2.176.1-0-linux-x64-installer.run --prefix /opt/jenkins --mode unattended --base_password ",
                 {
                   "Ref": "jenkinsPWParam"

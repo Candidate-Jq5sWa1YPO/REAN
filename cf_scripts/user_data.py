@@ -12,6 +12,7 @@ def jenkins_userData(password,region, stack_name,**kwargs):
         'pip install awscli\n',
         'wget -O ~/bitnami-jenkins-2.176.1-0-linux-x64-installer.run https://bitnami.com/redirect/to/575932/bitnami-jenkins-2.176.1-0-linux-x64-installer.run?bypassauth=false\n',
         'chmod 754 ~/bitnami-jenkins-2.176.1-0-linux-x64-installer.run\n',
+	'echo 127.0.0.1  `hostname` >> /etc/hosts\n',
         '~/bitnami-jenkins-2.176.1-0-linux-x64-installer.run --prefix /opt/jenkins --mode unattended --base_password ',password,'\n',
         'wget -O /tmp/jenkins_elk.json https://raw.githubusercontent.com/Candidate-Jq5sWa1YPO/REAN/master/jenkins_ELK_cfn_vpc_template.json\n',
         'wget -O /opt/update-stack.sh https://raw.githubusercontent.com/Candidate-Jq5sWa1YPO/REAN/master/update-stack.sh\n',

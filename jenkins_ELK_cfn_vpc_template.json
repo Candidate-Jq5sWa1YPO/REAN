@@ -199,7 +199,7 @@
         "cg1.4xlarge"
       ],
       "ConstraintDescription": "Must be a valid EC2 instance type.",
-      "Default": "m3.medium",
+      "Default": "t2.medium",
       "Description": "Jenkins Server EC2 HVM Instance type",
       "Type": "String"
     },
@@ -420,7 +420,7 @@
                 "\n",
                 "wget -O /tmp/jenkins_elk.json https://raw.githubusercontent.com/Candidate-Jq5sWa1YPO/REAN/master/jenkins_ELK_cfn_vpc_template.json\n",
                 "wget -O /opt/update-stack.sh https://raw.githubusercontent.com/Candidate-Jq5sWa1YPO/REAN/master/update-stack.sh\n",
-                "chmod 754 /opt/update-stack.sh\n",
+                "chmod 755 /opt/update-stack.sh\n",
                 "wget -O /tmp/jenkinsJob.xml https://raw.githubusercontent.com/Candidate-Jq5sWa1YPO/REAN/master/jenkinsJob.xml\n",
                 "curl -u user:",
                 {

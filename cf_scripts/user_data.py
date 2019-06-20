@@ -16,7 +16,7 @@ def jenkins_userData(password,region, stack_name,**kwargs):
         '~/bitnami-jenkins-2.176.1-0-linux-x64-installer.run --prefix /opt/jenkins --mode unattended --base_password ',password,'\n',
         'wget -O /tmp/jenkins_elk.json https://raw.githubusercontent.com/Candidate-Jq5sWa1YPO/REAN/master/jenkins_ELK_cfn_vpc_template.json\n',
         'wget -O /opt/update-stack.sh https://raw.githubusercontent.com/Candidate-Jq5sWa1YPO/REAN/master/update-stack.sh\n',
-        'chmod 754 /opt/update-stack.sh\n',
+        'chmod 755 /opt/update-stack.sh\n',
         'wget -O /tmp/jenkinsJob.xml https://raw.githubusercontent.com/Candidate-Jq5sWa1YPO/REAN/master/jenkinsJob.xml\n',
         'curl -u user:', password,' -X POST -H "Content-Type:application/xml" -d @/tmp/jenkinsJob.xml "http://localhost/jenkins/createItem?name=DeployELK" \n'
         'curl -u user:',password,' -X POST http://localhost/jenkins/job/DeployELK/buildWithParameters?stack_name=',stack_name,'&input_file=/tmp/jenkins_elk.json&stack_region=',region,'\n',

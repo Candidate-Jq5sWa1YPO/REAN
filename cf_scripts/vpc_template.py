@@ -42,7 +42,7 @@ quad_zero_ip = constants.QUAD_ZERO  # '0.0.0.0/0'
 candidate_id= 'Candidate-Jq5sWa1YPO'
 candidate_name= 'Candidate-Jq5sWa1YPO'
 
-add_elk_instance = True
+add_elk_instance = False
 
 t = Template()
 t.add_description("""\
@@ -53,10 +53,10 @@ jenkins_instance_type_param = t.add_parameter(Parameter(
     'jenkinsServerParam',
     Type='String',
     Description='Jenkins Server EC2 HVM Instance type',
-    Default='t2.medium',
+    Default='m5.large',
     AllowedValues=[
         't2.micro', 't2.small', 't2.medium',
-        'm3.medium', 'm3.large', 'm3.xlarge', 'm3.2xlarge',
+        'm3.medium', 'm3.large', 'm3.xlarge', 'm3.2xlarge','m5.large',
         'c3.large', 'c3.xlarge', 'c3.2xlarge', 'c3.4xlarge', 'c3.8xlarge',
         'r3.large', 'r3.xlarge', 'r3.2xlarge', 'r3.4xlarge', 'r3.8xlarge',
         'i2.xlarge', 'i2.2xlarge', 'i2.4xlarge', 'i2.8xlarge',
@@ -303,5 +303,6 @@ with open(json_path, 'w') as f:
     f.write(t.to_json(indent=2))
 print ('DONE')
 
-import subprocess # Validate with aws commandline tool
-subprocess.call("aws cloudformation validate-template --profile rean --region us-east-1 --template-body file://{0}".format(json_path)) #--profile rean --region US-East-1)
+#import subprocess # Validate with aws commandline tool
+#subprocess.call("aws cloudformation validate-template --region us-east-1 --template-body file://{0}".format(json_path),shell=True)
+#--profile rean --region US-East-1)

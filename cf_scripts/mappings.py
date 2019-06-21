@@ -43,6 +43,8 @@ AWSInstanceType2Arch = {
         'm3.xlarge':  HVM64_MAP,
         'm3.2xlarge': HVM64_MAP,
 
+	'm5.large':   HVM64_MAP,
+
         'c1.medium':  PV64_MAP,
         'c1.xlarge':  PV64_MAP,
 

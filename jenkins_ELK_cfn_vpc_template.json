@@ -1,5 +1,5 @@
 {
-  "Description": "Cloud Formation Template.  Template Created: 2019-06-20 16:39:08",
+  "Description": "Cloud Formation Template.  Template Created: 2019-06-21 09:39:58",
   "Mappings": {
     "AWSInstanceType2Arch": {
       "c1.medium": {
@@ -81,6 +81,9 @@
         "Arch": "HVM64"
       },
       "m3.xlarge": {
+        "Arch": "HVM64"
+      },
+      "m5.large": {
         "Arch": "HVM64"
       },
       "r3.2xlarge": {
@@ -178,6 +181,7 @@
         "m3.large",
         "m3.xlarge",
         "m3.2xlarge",
+        "m5.large",
         "c3.large",
         "c3.xlarge",
         "c3.2xlarge",
@@ -199,7 +203,7 @@
         "cg1.4xlarge"
       ],
       "ConstraintDescription": "Must be a valid EC2 instance type.",
-      "Default": "t2.medium",
+      "Default": "m5.large",
       "Description": "Jenkins Server EC2 HVM Instance type",
       "Type": "String"
     },
@@ -408,11 +412,11 @@
                 "service ufw stop\n",
                 "apt-get update\n",
                 "apt-get install python-pip -y\n",
-		"apt-get install fontconfig -y\n",
+                "apt-get install fontconfig -y\n",
                 "pip install awscli\n",
                 "wget -O ~/bitnami-jenkins-2.176.1-0-linux-x64-installer.run https://bitnami.com/redirect/to/575932/bitnami-jenkins-2.176.1-0-linux-x64-installer.run?bypassauth=false\n",
                 "chmod 754 ~/bitnami-jenkins-2.176.1-0-linux-x64-installer.run\n",
-	        "echo 127.0.0.1  `hostname` >> /etc/hosts\n",
+                "echo 127.0.0.1  `hostname` >> /etc/hosts\n",
                 "~/bitnami-jenkins-2.176.1-0-linux-x64-installer.run --prefix /opt/jenkins --mode unattended --base_password ",
                 {
                   "Ref": "jenkinsPWParam"

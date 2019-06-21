@@ -14,12 +14,12 @@
         <hudson.model.StringParameterDefinition>
           <name>input_file</name>
           <description>Path to json file</description>
-          <defaultValue></defaultValue>
+          <defaultValue>/tmp/jenkins_elk.json</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>stack_region</name>
           <description></description>
-          <defaultValue></defaultValue>
+          <defaultValue>us-east-1</defaultValue>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>

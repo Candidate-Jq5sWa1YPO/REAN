@@ -42,7 +42,7 @@ quad_zero_ip = constants.QUAD_ZERO  # '0.0.0.0/0'
 candidate_id= 'Candidate-Jq5sWa1YPO'
 candidate_name= 'Candidate-Jq5sWa1YPO'
 
-add_elk_instance = False
+add_elk_instance = True
 
 t = Template()
 t.add_description("""\

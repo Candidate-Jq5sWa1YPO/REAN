@@ -19,8 +19,8 @@ def jenkins_userData(password,region, stack_name,**kwargs):
         'chmod 755 /opt/update-stack.sh\n',
         'wget -O /tmp/jenkinsJob.xml https://raw.githubusercontent.com/Candidate-Jq5sWa1YPO/REAN/master/jenkinsJob.xml\n',
 	'CRUMB=`curl -u user:Jq5sWa1YPO "http://localhost/jenkins/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,%22:%22,//crumb)"`\n',
-        'curl -u user:', password,' -X POST -H "Content-Type:application/xml" -H "$CRUMB" -d @/tmp/jenkinsJob.xml "http://localhost/jenkins/createItem?name=DeployELK" \n'
-        'curl -u user:',password,' -X POST -H "$CRUMB" http://localhost/jenkins/job/DeployELK/buildWithParameters?stack_name=',stack_name,'&input_file=/tmp/jenkins_elk.json&stack_region=',region,'\n',
+        'curl -u user:', password,' -X POST -H "Content-Type:application/xml" -H $CRUMB -d @/tmp/jenkinsJob.xml "http://localhost/jenkins/createItem?name=DeployELK" \n',
+        'curl -u user:',password,' -X POST -H $CRUMB http://localhost/jenkins/job/DeployELK/buildWithParameters?stack_name=',stack_name,'&input_file=/tmp/jenkins_elk.json&stack_region=',region,'\n',
     ]))
 
 def elk_userData(**kwargs):

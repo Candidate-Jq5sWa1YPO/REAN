@@ -1,5 +1,5 @@
 {
-  "Description": "Cloud Formation Template.  Template Created: 2019-06-21 11:21:04",
+  "Description": "Cloud Formation Template.  Template Created: 2019-06-21 12:20:59",
   "Mappings": {
     "AWSInstanceType2Arch": {
       "c1.medium": {
@@ -431,11 +431,12 @@
                 {
                   "Ref": "jenkinsPWParam"
                 },
-                " -X POST -H \"Content-Type:application/xml\" -H \"$CRUMB\" -d @/tmp/jenkinsJob.xml \"http://localhost/jenkins/createItem?name=DeployELK\" \ncurl -u user:",
+                " -X POST -H \"Content-Type:application/xml\" -H $CRUMB -d @/tmp/jenkinsJob.xml \"http://localhost/jenkins/createItem?name=DeployELK\" \n",
+                "curl -u user:",
                 {
                   "Ref": "jenkinsPWParam"
                 },
-                " -X POST -H \"$CRUMB\" http://localhost/jenkins/job/DeployELK/buildWithParameters?stack_name=",
+                " -X POST -H $CRUMB http://localhost/jenkins/job/DeployELK/buildWithParameters?stack_name=",
                 {
                   "Ref": "AWS::StackId"
                 },

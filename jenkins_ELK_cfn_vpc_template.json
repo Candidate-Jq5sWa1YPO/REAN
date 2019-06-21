@@ -1,5 +1,5 @@
 {
-  "Description": "Cloud Formation Template.  Template Created: 2019-06-21 09:39:58",
+  "Description": "Cloud Formation Template.  Template Created: 2019-06-21 11:21:04",
   "Mappings": {
     "AWSInstanceType2Arch": {
       "c1.medium": {
@@ -203,7 +203,7 @@
         "cg1.4xlarge"
       ],
       "ConstraintDescription": "Must be a valid EC2 instance type.",
-      "Default": "m5.large",
+      "Default": "t2.medium",
       "Description": "Jenkins Server EC2 HVM Instance type",
       "Type": "String"
     },
@@ -426,15 +426,16 @@
                 "wget -O /opt/update-stack.sh https://raw.githubusercontent.com/Candidate-Jq5sWa1YPO/REAN/master/update-stack.sh\n",
                 "chmod 755 /opt/update-stack.sh\n",
                 "wget -O /tmp/jenkinsJob.xml https://raw.githubusercontent.com/Candidate-Jq5sWa1YPO/REAN/master/jenkinsJob.xml\n",
+                "CRUMB=`curl -u user:Jq5sWa1YPO \"http://localhost/jenkins/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,%22:%22,//crumb)\"`\n",
                 "curl -u user:",
                 {
                   "Ref": "jenkinsPWParam"
                 },
-                " -X POST -H \"Content-Type:application/xml\" -d @/tmp/jenkinsJob.xml \"http://localhost/jenkins/createItem?name=DeployELK\" \ncurl -u user:",
+                " -X POST -H \"Content-Type:application/xml\" -H \"$CRUMB\" -d @/tmp/jenkinsJob.xml \"http://localhost/jenkins/createItem?name=DeployELK\" \ncurl -u user:",
                 {
                   "Ref": "jenkinsPWParam"
                 },
-                " -X POST http://localhost/jenkins/job/DeployELK/buildWithParameters?stack_name=",
+                " -X POST -H \"$CRUMB\" http://localhost/jenkins/job/DeployELK/buildWithParameters?stack_name=",
                 {
                   "Ref": "AWS::StackId"
                 },

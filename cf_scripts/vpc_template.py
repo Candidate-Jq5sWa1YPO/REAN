@@ -53,7 +53,7 @@ jenkins_instance_type_param = t.add_parameter(Parameter(
     'jenkinsServerParam',
     Type='String',
     Description='Jenkins Server EC2 HVM Instance type',
-    Default='m5.large',
+    Default='t2.medium',
     AllowedValues=[
         't2.micro', 't2.small', 't2.medium',
         'm3.medium', 'm3.large', 'm3.xlarge', 'm3.2xlarge','m5.large',

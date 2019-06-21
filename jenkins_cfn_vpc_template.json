@@ -1,5 +1,5 @@
 {
-  "Description": "Cloud Formation Template.  Template Created: 2019-06-21 12:20:47",
+  "Description": "Cloud Formation Template.  Template Created: 2019-06-21 14:13:40",
   "Mappings": {
     "AWSInstanceType2Arch": {
       "c1.medium": {
@@ -422,6 +422,8 @@
                     "ec2:RunInstances",
                     "ec2:DescribeInstances",
                     "ec2:DescribeInstanceStatus",
+                    "ec2:TerminateInstances",
+                    "ec2:CreateTags",
                     "ec2:AuthorizeSecurityGroupIngress"
                   ],
                   "Effect": "Allow",

@@ -27,7 +27,7 @@ from awacs.aws import Allow, Statement, Principal, Policy
 from awacs.sts import AssumeRole
 # Actions
 from awacs.cloudformation import CancelUpdateStack, CreateStack, ListStackResources, DescribeStackEvents,  UpdateStack
-from awacs.ec2 import RunInstances,DescribeInstances,DescribeInstanceStatus,AuthorizeSecurityGroupIngress, StartInstances
+from awacs.ec2 import RunInstances,DescribeInstances,DescribeInstanceStatus,AuthorizeSecurityGroupIngress, StartInstances, TerminateInstances, CreateTags
 # Script Helpers
 
 import mappings
@@ -42,7 +42,7 @@ quad_zero_ip = constants.QUAD_ZERO  # '0.0.0.0/0'
 candidate_id= 'Candidate-Jq5sWa1YPO'
 candidate_name= 'Candidate-Jq5sWa1YPO'
 
-add_elk_instance = True
+add_elk_instance = False
 
 t = Template()
 t.add_description("""\
@@ -215,6 +215,8 @@ jenkinsRole = t.add_resource(Role(
                                                    RunInstances,
                                                    DescribeInstances,
                                                    DescribeInstanceStatus,
+						   TerminateInstances,
+						   CreateTags,
                                                    AuthorizeSecurityGroupIngress],
                                            Resource=["*"])
                              ]

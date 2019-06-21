@@ -19,17 +19,20 @@
 # Add Elasticsearch apt key
 
   - name: Add Elasticsearch apt key
-    apt_key: url="https://packages.elastic.co/GPG-KEY-elasticsearch" state=present
+    apt_key: url="https://artifacts.elastic.co/GPG-KEY-elasticsearch" state=present
+
+  - name: install apt-transport-https
+    apt: name=apt-transport-https update_cache=yes
 
 # Add the Elasticsearch apt repo. For versions 6 of the stack - use '6.x-prerelease':
 
   - name: Adding Elasticsearch repo
-    apt_repository: repo="deb https://artifacts.elastic.co/packages/5.x/apt stable main state=present"
+    apt_repository: repo="deb https://artifacts.elastic.co/packages/7.x/apt stable main" state=present
 
 # Installing Elasticsearch
 
-  - name: Install urllib3
-    apt: name=python-urllib3 update_cache=yes
+#  - name: Install urllib3
+#    apt: name=python-urllib3 update_cache=yes
 
   - name: Install Elasticsearch
     apt: name=elasticsearch update_cache=yes
@@ -43,6 +46,10 @@
 
   - name: Updating the port in config file
     lineinfile: "destfile=/etc/elasticsearch/elasticsearch.yml regexp='http.port:' line='http.port: 9200'"
+
+# Update discovery
+  - name: update discovery
+    lineinfile: "destfile=/etc/elasticsearch/elasticsearch.yml regexp='discovery.type:' line='discovery.type: single-node'"
 
 # Start Elasticsearch
   - name: Starting Elasticsearch
@@ -67,7 +74,7 @@
     lineinfile: "destfile=/etc/kibana/kibana.yml regexp='server.port:' line='server.port: 5601'"
 
   - name: Defining Elasticsearch URL
-    lineinfile: "destfile=/etc/kibana/kibana.yml regexp='elasticsearch.url:' line='elasticsearch.url: http://localhost:9200'"
+    lineinfile: "destfile=/etc/kibana/kibana.yml regexp='elasticsearch.url:' line='elasticsearch.hosts: http://localhost:9200'"
 
 # Starting Kibana
 
